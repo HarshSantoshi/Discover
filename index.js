@@ -3,14 +3,21 @@ const app = express();
 const PORT = 8000;
 const expressLayout = require('express-ejs-layouts');
 
-app.use(expressLayout);
+const db = require('./config/mongoose.js')
 
+app.use(express.static('./assets'));
+app.use(expressLayout);
+//extract style and script from subpages to the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
+
+//Loading the routes
+app.use('/' , require('./routes'));
 //Setting view Engine
 app.set('view engine' , 'ejs');
 app.set('views' , './views');
 
-//Loading the routes
-app.use('/' , require('./routes'));
 app.listen(PORT,function(err){
     if(err){
         console.log(`Error in running the server ${err}`);
