@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 const PORT = 8000;
+const expressLayout = require('express-ejs-layouts');
+
+app.use(expressLayout);
+
 //Setting view Engine
 app.set('view engine' , 'ejs');
 app.set('views' , './views');
