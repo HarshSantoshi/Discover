@@ -1,5 +1,6 @@
 module.exports.home = function(req, res){
-    // return res.send("<h1>Express is running</h1>");
+    // console.log(req.cookies)
+    // res.cookie('user_id',5);
     return res.render('home',{
         title : "Home"
     })

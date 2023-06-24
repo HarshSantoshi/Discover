@@ -1,3 +1,4 @@
+const User = require('../models/user')
 module.exports.profile = function(req,res){
     // console.log("profile page");
     // return res.send('<h1>User Profile</h1>')
@@ -18,9 +19,28 @@ module.exports.signIn = function(req ,res){
     })
 }
 //get user data
-module.exports.create = function(req , res){
+module.exports.create = function (req, res) {
+    console.log(req.body);
+    if (req.body.password !== req.body.confirm_password) {
+        return res.redirect('back');
+    }
+    User.findOne({ email: req.body.email })
+        .then(user => {
+            if (!user) {
+                return User.create(req.body);
+            } else {
+                return Promise.reject('User already exists'); // Reject the promise if user exists
+            }
+        })
+        .then(user => {
+            return res.redirect('/users/signin');
+        })
+        .catch(err => {
+            console.log('Error in creating or finding user while signing up:', err);
+            return res.redirect('back');
+        });
+};
 
-}
 
 //user login and create session
 module.exports.createSession = function(req , res){
