@@ -17,3 +17,12 @@ module.exports.signIn = function(req ,res){
         title:"Social | Sign In"
     })
 }
+//get user data
+module.exports.create = function(req , res){
+
+}
+
+//user login and create session
+module.exports.createSession = function(req , res){
+    
+}
