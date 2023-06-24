@@ -5,3 +5,15 @@ module.exports.profile = function(req,res){
         title: " Profile"
     })
 }
+//render signup page
+module.exports.signUp = function(req ,res){
+    return res.render('user_signup.ejs', {
+        title:"Social | Sign up"
+    })
+}
+//render signin page
+module.exports.signIn = function(req ,res){
+    return res.render('user_signin.ejs', {
+        title:"Social | Sign In"
+    })
+}
