@@ -8,6 +8,9 @@ const session = require('express-session');
 const db = require('./config/mongoose.js')
 const passport = require('passport')
 const passportLocal = require('./config/passport-local-strategy.js')
+
+
+
 app.use(cookieParser());
 app.use(express.static('./assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,10 +33,12 @@ app.use(session({
     cookie :{
         maxAge : (1000 * 60 * 100)
     }
-}))
+}));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 //Loading the routes
 app.use('/' , require('./routes'));
