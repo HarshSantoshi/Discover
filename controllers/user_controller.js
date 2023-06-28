@@ -1,27 +1,27 @@
 const User = require('../models/user')
-module.exports.profile = function(req,res){
+module.exports.profile = function (req, res) {
     // console.log("profile page");
     // return res.send('<h1>User Profile</h1>')
-    return res.render('profile' ,{
+    return res.render('profile', {
         title: " Profile"
     })
 }
 //render signup page
-module.exports.signUp = function(req ,res){
-    if(req.isAuthenticated()){
+module.exports.signUp = function (req, res) {
+    if (req.isAuthenticated()) {
         return res.redirect('/users/profile');
     }
     return res.render('user_signup.ejs', {
-        title:"Social | Sign up"
+        title: "Social | Sign up"
     })
 }
 //render signin page
-module.exports.signIn = function(req ,res){
-    if(req.isAuthenticated()){
+module.exports.signIn = function (req, res) {
+    if (req.isAuthenticated()) {
         return res.redirect('/users/profile');
     }
     return res.render('user_signin.ejs', {
-        title:"Social | Sign In"
+        title: "Social | Sign In"
     })
 }
 //get user data
@@ -49,6 +49,15 @@ module.exports.create = function (req, res) {
 
 
 //user login and create session
-module.exports.createSession = function(req , res){
+module.exports.createSession = function (req, res) {
     return res.redirect('/');
+}
+
+module.exports.destroySession = function (req, res) {
+    req.logout(function (err) {
+        if (err) {
+            console.error('Error logging out:', err);
+        }
+        return res.redirect('/');
+    });
 }
