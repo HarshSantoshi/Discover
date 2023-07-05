@@ -8,9 +8,17 @@ const session = require('express-session');
 const db = require('./config/mongoose.js');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy.js');
+const sassMiddleware = require('node-sass-middleware')
 
 const MongoStore = require('connect-mongo')(session)
 
+app.use(sassMiddleware({
+  src :'./assets/scss' , 
+  dest : './assets/css' ,
+  debug: true ,
+  outputStyle : 'extended' , 
+  prefix : '/css'
+}))
 app.use(express.static('./assets'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
