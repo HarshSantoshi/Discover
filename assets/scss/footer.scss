@@ -1,0 +1,17 @@
+footer{
+    background-color: #333;
+    color: white;
+    display: flex;
+    ul{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        li{
+            margin-right:10px;
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}

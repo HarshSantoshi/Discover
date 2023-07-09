@@ -1,0 +1,25 @@
+$primary-color : #405e9c;
+header{
+    background-color: $primary-color;
+    color:white; 
+    ul{
+        display: flex;
+        justify-content: space-between;
+        .heading{
+            font-weight: 700;
+            font-size: 30px;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            li{
+                list-style: none;  
+                a{
+                    text-decoration: none;
+                    color: white;
+                    margin-right: 30px;
+                }
+            }
+        }
+    }
+}
